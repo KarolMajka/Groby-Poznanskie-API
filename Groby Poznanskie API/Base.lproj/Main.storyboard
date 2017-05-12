@@ -46,7 +46,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7FK-eZ-uYb" id="Ikg-86-jCU">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eov-TN-cUP">
@@ -72,18 +72,52 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="LgI-X3-gzn"/>
                                 </connections>
                             </tableView>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0e5-sx-h4V">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Zoq-XF-Asi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Cvh-nu-hHJ">
+                                            <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                            <color key="color" red="0.95294117649999999" green="0.43137254899999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </activityIndicatorView>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unable to download data. Tap to reload." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vld-va-2zE">
+                                            <rect key="frame" x="30" y="328" width="315" height="41"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.73333333329999995" green="0.10980392160000001" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Vld-va-2zE" secondAttribute="trailing" constant="30" id="8Np-Ot-fmH"/>
+                                        <constraint firstItem="Cvh-nu-hHJ" firstAttribute="centerX" secondItem="Zoq-XF-Asi" secondAttribute="centerX" id="QeO-Jq-KaD"/>
+                                        <constraint firstItem="Cvh-nu-hHJ" firstAttribute="centerY" secondItem="Zoq-XF-Asi" secondAttribute="centerY" id="mEz-Jw-k5s"/>
+                                        <constraint firstItem="Vld-va-2zE" firstAttribute="leading" secondItem="Zoq-XF-Asi" secondAttribute="leading" constant="30" id="pud-rO-hBi"/>
+                                        <constraint firstItem="Vld-va-2zE" firstAttribute="top" secondItem="Cvh-nu-hHJ" secondAttribute="bottom" constant="8" id="zkL-iV-aB9"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ypq-Jo-5ea" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3YQ-Pt-wKE"/>
+                            <constraint firstAttribute="trailing" secondItem="0e5-sx-h4V" secondAttribute="trailing" id="6eD-TZ-HsW"/>
+                            <constraint firstItem="0e5-sx-h4V" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cou-VY-iNR"/>
                             <constraint firstItem="ypq-Jo-5ea" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="d7d-Up-93e"/>
+                            <constraint firstItem="0e5-sx-h4V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eQk-Pa-HhE"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0e5-sx-h4V" secondAttribute="bottom" id="kx0-bO-Bob"/>
                             <constraint firstAttribute="trailing" secondItem="ypq-Jo-5ea" secondAttribute="trailing" id="sXC-b1-e9y"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ypq-Jo-5ea" secondAttribute="bottom" id="sYQ-VU-PSe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lista grobów" id="1pp-Ic-wit"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="Cvh-nu-hHJ" id="ywq-ed-G8h"/>
+                        <outlet property="errorLabel" destination="Vld-va-2zE" id="W2f-rT-n21"/>
                         <outlet property="tableView" destination="ypq-Jo-5ea" id="IIB-Cb-Md1"/>
+                        <outlet property="visualEffectView" destination="0e5-sx-h4V" id="U1o-R0-zjw"/>
                         <segue destination="0Ta-CM-GMh" kind="show" identifier="GraveDetails" id="NqP-Kq-Wfk"/>
                     </connections>
                 </viewController>

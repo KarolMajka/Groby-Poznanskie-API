@@ -12,23 +12,46 @@ class ViewController: UIViewController {
 
     //MARK: - variables
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var visualEffectView: UIVisualEffectView!
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet var errorLabel: UILabel!
+
     var arrayOfGraves: [GraveModel] = []
+    
     
     //MARK: - UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapView(_:)))
+        self.visualEffectView.addGestureRecognizer(tap)
+        
+        self.loadData()
+    }
+
+    func tapView(_ sender: UITapGestureRecognizer) {
+        self.visualEffectView.isUserInteractionEnabled = false
+        self.errorLabel.isHidden = true
+        self.activityIndicatorView.startAnimating()
+        self.loadData()
+    }
+    
+    func loadData() {
+
         getData(block: { (graves:[GraveModel]) in
             DispatchQueue.main.async {
                 self.arrayOfGraves = graves
                 self.tableView.reloadData()
+                self.visualEffectView.removeFromSuperview()
             }
         }, error: { (responseCode:Int?) in
-            
+            self.errorLabel.isHidden = false
+            self.activityIndicatorView.stopAnimating()
+            self.visualEffectView.isUserInteractionEnabled = true
         })
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,6 +63,7 @@ class ViewController: UIViewController {
         //self.navigationItem
     }
     
+    
     //MARK: - Navigation methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GraveDetails" {
@@ -49,6 +73,7 @@ class ViewController: UIViewController {
     }
 
 }
+
 
 //MARK: -
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
