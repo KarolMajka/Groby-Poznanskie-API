@@ -55,7 +55,7 @@ class GravePropertiesModel: Mappable {
     var g_name: String?
     var g_place: String?
     var g_quarter: String?
-    var g_row: Int?
+    var g_row: String?
     var g_size: String?
     var g_surname: String?
     var g_surname_name: String?
