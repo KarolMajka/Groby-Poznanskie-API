@@ -12,6 +12,8 @@
 		A37E801C1EC5EF12003F1781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37E801A1EC5EF12003F1781 /* Main.storyboard */; };
 		A37E801E1EC5EF12003F1781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37E801D1EC5EF12003F1781 /* Assets.xcassets */; };
 		A37E80211EC5EF12003F1781 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37E801F1EC5EF12003F1781 /* LaunchScreen.storyboard */; };
+		A37E80291EC5FB6E003F1781 /* RestConsumction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80281EC5FB6E003F1781 /* RestConsumction.swift */; };
+		A37E802B1EC5FC8F003F1781 /* GraveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E802A1EC5FC8F003F1781 /* GraveModel.swift */; };
 		E72FBD00D717258A30B84B5B /* Pods_Groby_Poznanskie_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B50E78878D83753BFEA093 /* Pods_Groby_Poznanskie_API.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		A37E801D1EC5EF12003F1781 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A37E80201EC5EF12003F1781 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A37E80221EC5EF12003F1781 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A37E80281EC5FB6E003F1781 /* RestConsumction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestConsumction.swift; sourceTree = "<group>"; };
+		A37E802A1EC5FC8F003F1781 /* GraveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraveModel.swift; sourceTree = "<group>"; };
 		CB2B18A459D5B7601BC018F1 /* Pods-Groby Poznanskie API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groby Poznanskie API.release.xcconfig"; path = "Pods/Target Support Files/Pods-Groby Poznanskie API/Pods-Groby Poznanskie API.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,12 +74,14 @@
 		A37E80151EC5EF12003F1781 /* Groby Poznanskie API */ = {
 			isa = PBXGroup;
 			children = (
+				A37E80281EC5FB6E003F1781 /* RestConsumction.swift */,
 				A37E80161EC5EF12003F1781 /* AppDelegate.swift */,
 				A37E80181EC5EF12003F1781 /* ViewController.swift */,
 				A37E801A1EC5EF12003F1781 /* Main.storyboard */,
 				A37E801D1EC5EF12003F1781 /* Assets.xcassets */,
 				A37E801F1EC5EF12003F1781 /* LaunchScreen.storyboard */,
 				A37E80221EC5EF12003F1781 /* Info.plist */,
+				A37E802A1EC5FC8F003F1781 /* GraveModel.swift */,
 			);
 			path = "Groby Poznanskie API";
 			sourceTree = "<group>";
@@ -212,6 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A37E80291EC5FB6E003F1781 /* RestConsumction.swift in Sources */,
+				A37E802B1EC5FC8F003F1781 /* GraveModel.swift in Sources */,
 				A37E80191EC5EF12003F1781 /* ViewController.swift in Sources */,
 				A37E80171EC5EF12003F1781 /* AppDelegate.swift in Sources */,
 			);
@@ -379,6 +387,7 @@
 				A37E80271EC5EF12003F1781 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
