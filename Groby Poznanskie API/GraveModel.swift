@@ -24,6 +24,9 @@ class GraveModel: Mappable {
         properties <- map["properties"]
     }
     
+    func getFullName() -> String {
+        return self.properties!.print_surname! + " " + self.properties!.print_name!
+    }
 }
 
 class GraveGeometryModel: Mappable {
