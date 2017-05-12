@@ -15,6 +15,7 @@
 		A37E80291EC5FB6E003F1781 /* RestConsumction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80281EC5FB6E003F1781 /* RestConsumction.swift */; };
 		A37E802B1EC5FC8F003F1781 /* GraveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E802A1EC5FC8F003F1781 /* GraveModel.swift */; };
 		A37E80301EC62BFF003F1781 /* GraveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E802E1EC62BFF003F1781 /* GraveTableViewCell.swift */; };
+		A37E80331EC63ABA003F1781 /* GraveDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80321EC63ABA003F1781 /* GraveDetailsViewController.swift */; };
 		E72FBD00D717258A30B84B5B /* Pods_Groby_Poznanskie_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B50E78878D83753BFEA093 /* Pods_Groby_Poznanskie_API.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		A37E80281EC5FB6E003F1781 /* RestConsumction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestConsumction.swift; sourceTree = "<group>"; };
 		A37E802A1EC5FC8F003F1781 /* GraveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraveModel.swift; sourceTree = "<group>"; };
 		A37E802E1EC62BFF003F1781 /* GraveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraveTableViewCell.swift; sourceTree = "<group>"; };
+		A37E80321EC63ABA003F1781 /* GraveDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraveDetailsViewController.swift; sourceTree = "<group>"; };
 		CB2B18A459D5B7601BC018F1 /* Pods-Groby Poznanskie API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groby Poznanskie API.release.xcconfig"; path = "Pods/Target Support Files/Pods-Groby Poznanskie API/Pods-Groby Poznanskie API.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 				A37E80161EC5EF12003F1781 /* AppDelegate.swift */,
 				A37E80181EC5EF12003F1781 /* ViewController.swift */,
 				A37E801A1EC5EF12003F1781 /* Main.storyboard */,
+				A37E80321EC63ABA003F1781 /* GraveDetailsViewController.swift */,
 				A37E801D1EC5EF12003F1781 /* Assets.xcassets */,
 				A37E801F1EC5EF12003F1781 /* LaunchScreen.storyboard */,
 				A37E802E1EC62BFF003F1781 /* GraveTableViewCell.swift */,
@@ -225,6 +228,7 @@
 				A37E802B1EC5FC8F003F1781 /* GraveModel.swift in Sources */,
 				A37E80191EC5EF12003F1781 /* ViewController.swift in Sources */,
 				A37E80301EC62BFF003F1781 /* GraveTableViewCell.swift in Sources */,
+				A37E80331EC63ABA003F1781 /* GraveDetailsViewController.swift in Sources */,
 				A37E80171EC5EF12003F1781 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

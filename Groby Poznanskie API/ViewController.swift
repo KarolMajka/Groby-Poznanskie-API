@@ -34,6 +34,19 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //self.navigationItem
+    }
+    
+    //MARK: - Navigation methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GraveDetails" {
+            let vc = segue.destination as! GraveDetailsViewController
+            vc.grave = sender as! GraveModel
+        }
+    }
 
 }
 
@@ -46,7 +59,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return min(self.arrayOfGraves.count,20)
+        return self.arrayOfGraves.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,7 +85,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //self.performSegue(withIdentifier: "GraveDetails", sender: self.arrayOfGraves[indexPath.row])
+        self.performSegue(withIdentifier: "GraveDetails", sender: self.arrayOfGraves[indexPath.row])
     }
 
 }
