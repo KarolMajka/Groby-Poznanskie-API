@@ -27,6 +27,77 @@ class GraveModel: Mappable {
     func getFullName() -> String {
         return self.properties!.print_surname! + " " + self.properties!.print_name!
     }
+    
+    func getTimeLifeString() -> String? {
+        guard let birthDate = self.properties?.g_date_birth,
+            let deathDate = self.properties?.g_date_death else {
+                return nil
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        if dateFormatter.string(from: birthDate) == "01-01-0001" || dateFormatter.string(from: deathDate) == "01-01-0001" {
+            return nil
+        }
+        let calendar = Calendar.autoupdatingCurrent
+        let date1 = calendar.startOfDay(for: birthDate)
+        let date2 = calendar.startOfDay(for: deathDate)
+        let components = calendar.dateComponents([.day, .month, .year], from: date1, to: date2)
+        return self.getDateString(year: components.year!, month: components.month!, day: components.day!)
+    }
+    
+    private func getPartDateString(date: Int, values: [String]) -> String {
+        var value = ""
+        
+        if date == 0 {
+            
+        } else if date == 1 {
+            value += "1 " + values[0]
+        } else if date <= 4 {
+            value += String(date) + " " + values[1]
+        } else if date >= 22 {
+            var tmp = date
+            while tmp > 9 {
+                tmp = tmp - Int(tmp/10)*10
+            }
+            if tmp == 2 || tmp == 3 || tmp == 4 {
+                value += String(date) + " " + values[1]
+            } else {
+                value += String(date) + " " + values[2]
+            }
+        } else {
+            value += String(date) + " " + values[2]
+        }
+        return value
+    }
+    
+    private func getDateString(year: Int, month: Int, day: Int) -> String {
+        let yearString = self.getPartDateString(date: year, values:["rok", "lata", "lat"])
+        let monthString = self.getPartDateString(date: month, values: ["miesiąc", "miesiące", "miesięcy"])
+        let dayString = self.getPartDateString(date: day, values: ["dzień", "dni", "dni"])
+        var dateString = yearString
+        if yearString != "" {
+            if monthString != "" && dayString != "" {
+                dateString += ", " + monthString + " i " + dayString
+            } else if monthString != "" {
+                dateString += " i " + monthString
+            } else if dayString != "" {
+                dateString += " i " + dayString
+            }
+        } else {
+            dateString = monthString
+            if monthString != "" {
+                if dayString != "" {
+                    dateString += " i " + dayString
+                }
+            } else {
+                dateString = dayString
+                if dayString == "" {
+                    return "0 dni"
+                }
+            }
+        }
+        return dateString
+    }
 }
 
 class GraveGeometryModel: Mappable {
