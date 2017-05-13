@@ -46,7 +46,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7FK-eZ-uYb" id="Ikg-86-jCU">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eov-TN-cUP">
@@ -118,30 +118,57 @@
                         <outlet property="errorLabel" destination="Vld-va-2zE" id="W2f-rT-n21"/>
                         <outlet property="tableView" destination="ypq-Jo-5ea" id="IIB-Cb-Md1"/>
                         <outlet property="visualEffectView" destination="0e5-sx-h4V" id="U1o-R0-zjw"/>
-                        <segue destination="0Ta-CM-GMh" kind="show" identifier="GraveDetails" id="NqP-Kq-Wfk"/>
+                        <segue destination="JQA-sb-bK8" kind="show" identifier="GraveDetails" id="wt5-0I-TXU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141.59999999999999" y="138.98050974512745"/>
+            <point key="canvasLocation" x="540" y="139"/>
         </scene>
         <!--Grave Details View Controller-->
-        <scene sceneID="6YD-vK-n7p">
+        <scene sceneID="Iip-Na-Qgs">
             <objects>
-                <viewController id="0Ta-CM-GMh" customClass="GraveDetailsViewController" customModule="Groby_Poznanskie_API" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oWg-Dn-iJO"/>
-                        <viewControllerLayoutGuide type="bottom" id="sR9-Mb-xgh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7tZ-1e-4XY">
+                <tableViewController id="JQA-sb-bK8" customClass="GraveDetailsViewController" customModule="Groby_Poznanskie_API" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bge-0U-6gc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="06d-U7-xyj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GraveDetailsCell" textLabel="387-pK-UAU" detailTextLabel="Sy4-uq-kIo" style="IBUITableViewCellStyleValue1" id="543-Tq-dw9">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="543-Tq-dw9" id="Jsq-dL-his">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="387-pK-UAU">
+                                            <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sy4-uq-kIo">
+                                            <rect key="frame" x="316" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="JQA-sb-bK8" id="EzT-h5-8zJ"/>
+                            <outlet property="delegate" destination="JQA-sb-bK8" id="7uu-01-MOB"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jje-11-xug" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="139"/>
+            <point key="canvasLocation" x="1670" y="155"/>
         </scene>
     </scenes>
 </document>
