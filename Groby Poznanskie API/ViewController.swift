@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     //MARK: - UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapView(_:)))
         self.visualEffectView.addGestureRecognizer(tap)
@@ -41,7 +40,12 @@ class ViewController: UIViewController {
 
         getData(block: { (graves:[GraveModel]) in
             DispatchQueue.main.async {
-                self.arrayOfGraves = graves
+                self.arrayOfGraves = graves.filter({graveModel in
+                    if graveModel.properties?.print_surname == "Rezerwacja" || graveModel.properties?.print_surname == "Puste" {
+                        return false
+                    }
+                    return true
+                })
                 self.tableView.reloadData()
                 self.visualEffectView.removeFromSuperview()
             }
@@ -51,18 +55,7 @@ class ViewController: UIViewController {
             self.visualEffectView.isUserInteractionEnabled = true
         })
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //self.navigationItem
-    }
-    
     
     //MARK: - Navigation methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

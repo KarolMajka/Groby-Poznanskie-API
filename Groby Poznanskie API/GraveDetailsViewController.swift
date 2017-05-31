@@ -38,17 +38,11 @@ class GraveDetailsViewController: UITableViewController {
     //MARK: - UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         self.tableView.tableFooterView = UIView()
         self.tableView.tableFooterView?.isHidden = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     //MARK: - UITableView methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,49 +62,7 @@ class GraveDetailsViewController: UITableViewController {
         
         let data = (self.content[indexPath.section]["Content"] as! [[String:String]])[indexPath.row]
         cell.textLabel?.text = data["Title"]
-        cell.detailTextLabel?.text = self.getDetailsText(value: data["Details"]!)
+        cell.detailTextLabel?.text = self.grave.properties?.value(forKey: data["Details"]!) as? String
         return cell
-    }
-    
-    func getDetailsText(value: String) -> String? {
-        switch(value) {
-        case "print_name":
-            return self.grave.properties?.print_name
-        case "print_surname":
-            return self.grave.properties?.print_surname
-        case "g_date_birth":
-            guard let date = self.grave.properties?.g_date_birth else {
-                return "Nieznana"
-            }
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy"
-            let dateString = dateFormatter.string(from: date)
-            if dateString == "01-01-0001" {
-                return "Nieznana"
-            }
-            return dateString
-        case "g_date_death":
-            guard let date = self.grave.properties?.g_date_death else {
-                return "Nieznana"
-            }
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy"
-            let dateString = dateFormatter.string(from: date)
-            if dateString == "01-01-0001" {
-                return "Nieznana"
-            }
-            return dateString
-        case "g_time_life":
-            return self.grave.getTimeLifeString()
-        case "g_quarter":
-            return self.grave.properties?.g_quarter
-        case "g_place":
-            return self.grave.properties?.g_place
-        case "g_row":
-            return self.grave.properties?.g_row
-        default:
-            return nil
-            
-        }
     }
 }

@@ -28,9 +28,81 @@ class GraveModel: Mappable {
         return self.properties!.print_surname! + " " + self.properties!.print_name!
     }
     
+}
+
+class GraveGeometryModel: Mappable {
+    var coordinates: CGPoint?
+    var type: GeometryTypeEnum?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        let values = (map.JSON["coordinates"] as! NSArray)[0] as! NSArray
+        coordinates = CGPoint(x: values[0] as! CGFloat, y: values[1] as! CGFloat)
+        type <- (map["type"], EnumTransform<GeometryTypeEnum>())
+    }
+}
+
+class GravePropertiesModel: NSObject, Mappable {
+    var cm_id: Int?
+    var cm_nr: Int?
+    var g_date_birth: String?
+    var g_date_burial: String?
+    var g_date_death: String?
+    var g_family: String?
+    var g_field: String?
+    var g_name: String?
+    var g_place: String?
+    var g_quarter: String?
+    var g_row: String?
+    var g_size: String?
+    var g_surname: String?
+    var g_surname_name: String?
+    var paid: Int?
+    var print_name: String?
+    var print_surname: String?
+    var print_surname_name: String?
+    lazy var g_time_life: String? = {
+        return self.getTimeLifeString()
+    }()
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        cm_id <- map["cm_id"]
+        cm_nr <- map["cm_nr"]
+        g_date_birth <- map["g_date_birth"]
+        g_date_burial <- map["g_date_burial"]
+        g_date_death <- map["g_date_death"]
+        g_family <- map["g_family"]
+        g_field <- map["g_field"]
+        g_name <- map["g_name"]
+        g_place <- map["g_place"]
+        g_quarter <- map["g_quarter"]
+        g_row <- map["g_row"]
+        g_size <- map["g_size"]
+        g_surname <- map["g_surname"]
+        g_surname_name <- map["g_surname_name"]
+        paid <- map["paid"]
+        print_name <- map["print_name"]
+        print_surname <- map["print_surname"]
+        print_surname_name <- map["print_surname_name"]
+    }
+    
     func getTimeLifeString() -> String? {
-        guard let birthDate = self.properties?.g_date_birth,
-            let deathDate = self.properties?.g_date_death else {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        guard
+            let birthDateString = self.g_date_birth,
+            let deathDateString = self.g_date_death,
+            let birthDate = formatter.date(from: birthDateString),
+            let deathDate = formatter.date(from: deathDateString) else {
                 return nil
         }
         let dateFormatter = DateFormatter()
@@ -97,70 +169,6 @@ class GraveModel: Mappable {
             }
         }
         return dateString
-    }
-}
-
-class GraveGeometryModel: Mappable {
-    var coordinates: CGPoint?
-    var type: GeometryTypeEnum?
-    
-    required init?(map: Map) {
-        
-    }
-    
-    func mapping(map: Map) {
-        let values = (map.JSON["coordinates"] as! NSArray)[0] as! NSArray
-        coordinates = CGPoint(x: values[0] as! CGFloat, y: values[1] as! CGFloat)
-        type <- (map["type"], EnumTransform<GeometryTypeEnum>())
-    }
-}
-
-class GravePropertiesModel: Mappable {
-    var cm_id: Int?
-    var cm_nr: Int?
-    var g_date_birth: Date?
-    var g_date_burial: Date?
-    var g_date_death: Date?
-    var g_family: String?
-    var g_field: String?
-    var g_name: String?
-    var g_place: String?
-    var g_quarter: String?
-    var g_row: String?
-    var g_size: String?
-    var g_surname: String?
-    var g_surname_name: String?
-    var paid: Int?
-    var print_name: String?
-    var print_surname: String?
-    var print_surname_name: String?
-    
-    required init?(map: Map) {
-        
-    }
-    
-    func mapping(map: Map) {
-        cm_id <- map["cm_id"]
-        cm_nr <- map["cm_nr"]
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        g_date_birth <- (map["g_date_birth"], DateFormatterTransform(dateFormatter: formatter))
-        g_date_burial <- (map["g_date_burial"], DateFormatterTransform(dateFormatter: formatter))
-        g_date_death <- (map["g_date_death"], DateFormatterTransform(dateFormatter: formatter))
-        g_family <- map["g_family"]
-        g_field <- map["g_field"]
-        g_name <- map["g_name"]
-        g_place <- map["g_place"]
-        g_quarter <- map["g_quarter"]
-        g_row <- map["g_row"]
-        g_size <- map["g_size"]
-        g_surname <- map["g_surname"]
-        g_surname_name <- map["g_surname_name"]
-        paid <- map["paid"]
-        print_name <- map["print_name"]
-        print_surname <- map["print_surname"]
-        print_surname_name <- map["print_surname_name"]
     }
 }
 
