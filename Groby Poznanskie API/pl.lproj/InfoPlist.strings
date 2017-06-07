@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Groby Poznanskie API
+
+  Created by Karol Majka on 07/06/2017.
+  Copyright © 2017 karolmajka. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "Groby Poznańskie";

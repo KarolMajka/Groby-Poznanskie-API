@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A3394A471EE8328000F4C4A9 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3394A461EE8328000F4C4A9 /* TableViewManager.swift */; };
 		A3394A491EE8355800F4C4A9 /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3394A481EE8355800F4C4A9 /* ViewControllerProtocol.swift */; };
+		A3394A4D1EE8603B00F4C4A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3394A4F1EE8603B00F4C4A9 /* InfoPlist.strings */; };
 		A34A1E6B1EDEF05600E96FE7 /* RealmManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */; };
 		A37E80171EC5EF12003F1781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80161EC5EF12003F1781 /* AppDelegate.swift */; };
 		A37E80191EC5EF12003F1781 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80181EC5EF12003F1781 /* ViewController.swift */; };
@@ -29,6 +30,11 @@
 		A3394A451EE81CC600F4C4A9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		A3394A461EE8328000F4C4A9 /* TableViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
 		A3394A481EE8355800F4C4A9 /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
+		A3394A4E1EE8603B00F4C4A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A3394A511EE8604000F4C4A9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A3394A521EE8621100F4C4A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A3394A541EE8623C00F4C4A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		A3394A551EE8624800F4C4A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManagement.swift; sourceTree = "<group>"; };
 		A37E80131EC5EF12003F1781 /* Groby Poznanskie API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Groby Poznanskie API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37E80161EC5EF12003F1781 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 				A3A9296C1EE804A0001000D8 /* Localizable.strings */,
 				A37E801D1EC5EF12003F1781 /* Assets.xcassets */,
 				A3A929721EE80C1B001000D8 /* Info.plist */,
+				A3394A4F1EE8603B00F4C4A9 /* InfoPlist.strings */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -223,6 +230,7 @@
 				A37E80211EC5EF12003F1781 /* LaunchScreen.storyboard in Resources */,
 				A37E801E1EC5EF12003F1781 /* Assets.xcassets in Resources */,
 				A37E801C1EC5EF12003F1781 /* Main.storyboard in Resources */,
+				A3394A4D1EE8603B00F4C4A9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,11 +304,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A3394A4F1EE8603B00F4C4A9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3394A4E1EE8603B00F4C4A9 /* Base */,
+				A3394A511EE8604000F4C4A9 /* pl */,
+				A3394A521EE8621100F4C4A9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A37E801A1EC5EF12003F1781 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A37E801B1EC5EF12003F1781 /* Base */,
 				A3394A451EE81CC600F4C4A9 /* pl */,
+				A3394A541EE8623C00F4C4A9 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -319,6 +338,7 @@
 			children = (
 				A3A9296B1EE804A0001000D8 /* pl */,
 				A3A9296E1EE804C2001000D8 /* Base */,
+				A3394A551EE8624800F4C4A9 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -375,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -420,7 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -436,7 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7KM42EHCAN;
 				INFOPLIST_FILE = "Groby Poznanskie API/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.karolmajka.Groby-Poznanskie-API";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -452,7 +472,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7KM42EHCAN;
 				INFOPLIST_FILE = "Groby Poznanskie API/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.karolmajka.Groby-Poznanskie-API";
 				PRODUCT_NAME = "$(TARGET_NAME)";

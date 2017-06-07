@@ -6,16 +6,27 @@
   Copyright © 2017 karolmajka. All rights reserved.
 */
 
-"Pull to refresh" = "Pull to refresh"
-"Poznan Graves" = "Poznan Graves"
-"Unable to download new data" = "Unable to download new data"
-"Data" = "Data"
-"Name" = "Name"
-"Surname" = "Surname"
-"Time Life" = "Time Life"
-"Birth Date" = "Birth Date"
-"Death Date" = "Death Date"
-"Grave Place" = "Grave Place"
-"Quarter" = "Quarter"
-"Place" = "Place"
-"Row" = "Row"
+"Pull to refresh" = "Pull to refresh";
+"Poznan Graves" = "Poznan Graves";
+"Unable to download new data" = "Unable to download new data";
+"Data" = "Data";
+"Name" = "Name";
+"Surname" = "Surname";
+"Time Life" = "Time Life";
+"Birth Date" = "Birth Date";
+"Death Date" = "Death Date";
+"Grave Place" = "Grave Place";
+"Quarter" = "Quarter";
+"Place" = "Place";
+"Row" = "Row";
+"year1" = "year";
+"year2" = "years";
+"year3" = "years";
+"month1" = "month";
+"month2" = "months";
+"month3" = "months";
+"day1" = "day";
+"day2" = "days";
+"day3" = "days";
+" and " = " and ";
+"0 day" = "0 day";
