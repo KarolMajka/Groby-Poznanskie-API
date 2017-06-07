@@ -39,17 +39,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0e5-sx-h4V">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Zoq-XF-Asi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Cvh-nu-hHJ">
-                                            <rect key="frame" x="169" y="305" width="37" height="37"/>
+                                            <rect key="frame" x="169" y="315" width="37" height="37"/>
                                             <color key="color" red="0.95294117649999999" green="0.43137254899999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </activityIndicatorView>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unable to download data. Tap to reload." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vld-va-2zE">
-                                            <rect key="frame" x="30" y="350" width="315" height="41"/>
+                                            <rect key="frame" x="30" y="360" width="315" height="41"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" red="0.73333333329999995" green="0.10980392160000001" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -66,7 +66,7 @@
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ypq-Jo-5ea">
-                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GraveCell" rowHeight="71" id="7FK-eZ-uYb" customClass="GraveTableViewCell" customModule="Groby_Poznanskie_API" customModuleProvider="target">
@@ -101,17 +101,17 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Search by Surname" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28D-BK-o8e">
-                                <rect key="frame" x="0.0" y="65" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="gKJ-LY-U0W"/>
                                 </connections>
                             </searchBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zl3-Z8-mfD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zl3-Z8-mfD" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graves List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnF-bI-daf">
-                                        <rect key="frame" x="144.5" y="30" width="86" height="21"/>
+                                        <rect key="frame" x="144.5" y="32.5" width="86" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                 <color key="backgroundColor" red="0.56160129992489893" green="0.40438018955541966" blue="0.23299575296964614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="jnF-bI-daf" firstAttribute="centerX" secondItem="zl3-Z8-mfD" secondAttribute="centerX" id="7Kb-E1-aB0"/>
-                                    <constraint firstAttribute="height" constant="65" id="bIX-ey-bsG"/>
+                                    <constraint firstAttribute="height" constant="70" id="bIX-ey-bsG"/>
                                     <constraint firstItem="jnF-bI-daf" firstAttribute="centerY" secondItem="zl3-Z8-mfD" secondAttribute="centerY" constant="8" id="hQm-mu-0e1"/>
                                 </constraints>
                             </view>
@@ -130,11 +130,11 @@
                             <constraint firstItem="zl3-Z8-mfD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1GK-ki-c9e"/>
                             <constraint firstItem="ypq-Jo-5ea" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3YQ-Pt-wKE"/>
                             <constraint firstAttribute="trailing" secondItem="0e5-sx-h4V" secondAttribute="trailing" id="6eD-TZ-HsW"/>
+                            <constraint firstItem="0e5-sx-h4V" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7Bh-E5-P32"/>
                             <constraint firstItem="28D-BK-o8e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ioi-m7-tEb"/>
                             <constraint firstItem="28D-BK-o8e" firstAttribute="top" secondItem="zl3-Z8-mfD" secondAttribute="bottom" id="OPa-eb-7AB"/>
                             <constraint firstAttribute="trailing" secondItem="zl3-Z8-mfD" secondAttribute="trailing" id="RQz-Kf-7QM"/>
                             <constraint firstItem="zl3-Z8-mfD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yr2-hk-RFH"/>
-                            <constraint firstItem="0e5-sx-h4V" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cou-VY-iNR"/>
                             <constraint firstItem="0e5-sx-h4V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eQk-Pa-HhE"/>
                             <constraint firstAttribute="trailing" secondItem="28D-BK-o8e" secondAttribute="trailing" id="hyD-yN-8HO"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0e5-sx-h4V" secondAttribute="bottom" id="kx0-bO-Bob"/>
@@ -147,6 +147,8 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="Cvh-nu-hHJ" id="ywq-ed-G8h"/>
                         <outlet property="errorLabel" destination="Vld-va-2zE" id="W2f-rT-n21"/>
+                        <outlet property="gravesListLabel" destination="jnF-bI-daf" id="7ke-lw-RJj"/>
+                        <outlet property="headerViewHeightConstraint" destination="bIX-ey-bsG" id="vNg-5a-IYf"/>
                         <outlet property="searchBar" destination="28D-BK-o8e" id="CYN-rz-kyN"/>
                         <outlet property="tableView" destination="ypq-Jo-5ea" id="IIB-Cb-Md1"/>
                         <outlet property="visualEffectView" destination="0e5-sx-h4V" id="U1o-R0-zjw"/>
@@ -155,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-78" y="139"/>
+            <point key="canvasLocation" x="-79.200000000000003" y="138.98050974512745"/>
         </scene>
         <!--Grave Details View Controller-->
         <scene sceneID="74S-1f-Qyg">

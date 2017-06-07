@@ -14,7 +14,7 @@ class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UI
     var arrayOfGraves: [GraveModel] = []
     var filteredArrayOfGraves: [GraveModel] = []
     var delegateMethod: ViewControllerProtocol!
-    
+    var previousPointY: CGFloat = 0
     
     //MARK: - UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,7 +37,10 @@ class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UI
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.delegateMethod.hideKeyboard()
+        if scrollView.contentOffset.y > 0 {
+            self.delegateMethod.didScroll(for: (self.previousPointY-scrollView.contentOffset.y)/5)
+            self.previousPointY = scrollView.contentOffset.y
+        }
     }
     
     //MARK: - UISearchView

@@ -16,8 +16,10 @@ class ViewController: UIViewController, ViewControllerProtocol {
     @IBOutlet var visualEffectView: UIVisualEffectView!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet var errorLabel: UILabel!
+    @IBOutlet var gravesListLabel: UILabel!
     @IBOutlet var searchBar: UISearchBar!
-    
+    @IBOutlet var headerViewHeightConstraint: NSLayoutConstraint!
+
     let tableViewManager: TableViewManager = TableViewManager()
     let refreshControl = UIRefreshControl()
 
@@ -109,6 +111,12 @@ class ViewController: UIViewController, ViewControllerProtocol {
         }
     }
     
+    func resizeHeader(for scrollSize: CGFloat) {
+        self.headerViewHeightConstraint.constant += scrollSize
+        self.headerViewHeightConstraint.constant = max(min(self.headerViewHeightConstraint.constant, 70), 35)
+        self.gravesListLabel.alpha = (self.headerViewHeightConstraint.constant - 35)/(70-35)
+    }
+    
     
     //MARK: - Navigation methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -139,7 +147,15 @@ class ViewController: UIViewController, ViewControllerProtocol {
         self.searchBar.resignFirstResponder()
     }
     
+    func didScroll(for scrollSize: CGFloat) {
+        self.searchBar.resignFirstResponder()
+        self.resizeHeader(for: scrollSize)
+    }
+    
     func showKeyboard() {
-        
+        self.tableView.setContentOffset(self.tableView.contentOffset, animated: false)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.resizeHeader(for: -40)
+        })
     }
 }

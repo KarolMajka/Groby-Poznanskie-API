@@ -14,4 +14,5 @@ protocol ViewControllerProtocol {
     func cancelButtonTap()
     func hideKeyboard()
     func showKeyboard()
+    func didScroll(for scrollSize: CGFloat)
 }
