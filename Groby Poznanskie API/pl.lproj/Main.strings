@@ -1,6 +1,9 @@
 
-/* Class = "UINavigationItem"; title = "Lista grobów"; ObjectID = "1pp-Ic-wit"; */
-"1pp-Ic-wit.title" = "Lista grobów";
+/* Class = "UINavigationItem"; title = "Graves List"; ObjectID = "1pp-Ic-wit"; */
+"1pp-Ic-wit.title" = "Graves List";
+
+/* Class = "UISearchBar"; placeholder = "Search by Name and Surname"; ObjectID = "28D-BK-o8e"; */
+"28D-BK-o8e.placeholder" = "Szukaj po nazwisku";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "387-pK-UAU"; */
 "387-pK-UAU.text" = "Title";
@@ -13,3 +16,6 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "eov-TN-cUP"; */
 "eov-TN-cUP.text" = "Label";
+
+/* Class = "UILabel"; text = "Graves List"; ObjectID = "jnF-bI-daf"; */
+"jnF-bI-daf.text" = "Lista grobów";

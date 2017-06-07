@@ -9,36 +9,42 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ViewControllerProtocol {
 
     //MARK: - variables
     @IBOutlet var tableView: UITableView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet var errorLabel: UILabel!
+    @IBOutlet var searchBar: UISearchBar!
     
+    let tableViewManager: TableViewManager = TableViewManager()
     let refreshControl = UIRefreshControl()
-    var arrayOfGraves: [GraveModel] = []
-    
+
     
     //MARK: - UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.bringSubview(toFront: self.visualEffectView)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapView(_:)))
         self.visualEffectView.addGestureRecognizer(tap)
+        
         self.addRefreshController()
+        self.tableViewManager.delegateMethod = self
+        self.tableView.delegate = self.tableViewManager
+        self.tableView.dataSource = self.tableViewManager
+        self.searchBar.delegate = self.tableViewManager
         
         self.loadData()
     }
 
-    
     func addRefreshController() {
         self.refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to refresh", comment: ""))
         self.refreshControl.addTarget(self, action: #selector(self.loadDataFromRemote(_:)), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(refreshControl)
     }
-    
+
     func tapView(_ sender: UITapGestureRecognizer) {
         self.visualEffectView.isUserInteractionEnabled = false
         self.errorLabel.isHidden = true
@@ -49,7 +55,8 @@ class ViewController: UIViewController {
     func loadData() {
         let graves = loadGraveModelFromRealm()
         if graves.count != 0 {
-            self.arrayOfGraves = graves
+            self.tableViewManager.arrayOfGraves = graves
+            self.tableViewManager.filteredArrayOfGraves = graves
             self.tableView.reloadData()
             self.visualEffectView.removeFromSuperview()
         } else {
@@ -63,13 +70,14 @@ class ViewController: UIViewController {
         
         self.getData(block: { (graves:[GraveModel]) in
             DispatchQueue.main.async {
-                self.arrayOfGraves = graves.filter({graveModel in
+                self.tableViewManager.arrayOfGraves = graves.filter({graveModel in
                     if graveModel.properties?.print_surname == "Rezerwacja" || graveModel.properties?.print_surname == "Puste" {
                         return false
                     }
                     return true
                 })
-                self.saveGravesInRealm(graveArray: self.arrayOfGraves)
+                self.tableViewManager.filteredArrayOfGraves = self.tableViewManager.arrayOfGraves
+                self.saveGravesInRealm(graveArray: self.tableViewManager.arrayOfGraves)
                 self.tableView.reloadData()
                 self.visualEffectView.removeFromSuperview()
                 self.tableView.isUserInteractionEnabled = true
@@ -101,6 +109,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     //MARK: - Navigation methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GraveDetails" {
@@ -108,32 +117,29 @@ class ViewController: UIViewController {
             vc.grave = sender as! GraveModel
         }
     }
+    
+    
+    //MARK: - Protocol methods
+    func showGraveDetails(grave: GraveModel) {
+        self.hideKeyboard()
+        self.performSegue(withIdentifier: "GraveDetails", sender: grave)
+    }
+    
+    func reloadData() {
+        self.tableView.reloadData()
+    }
+    
+    func cancelButtonTap() {
+        self.searchBar.text = ""
+        self.tableView.reloadData()
+        self.hideKeyboard()
+    }
 
+    func hideKeyboard() {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func showKeyboard() {
+        
+    }
 }
-
-
-//MARK: -
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    //MARK: UITableView methods
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arrayOfGraves.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GraveCell", for: indexPath) as! GraveTableViewCell
-        cell.name.text = self.arrayOfGraves[indexPath.row].getFullName()
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        self.performSegue(withIdentifier: "GraveDetails", sender: self.arrayOfGraves[indexPath.row])
-    }
-
-}
-

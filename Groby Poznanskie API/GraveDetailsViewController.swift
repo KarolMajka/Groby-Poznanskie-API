@@ -8,9 +8,11 @@
 
 import UIKit
 
-class GraveDetailsViewController: UITableViewController {
+class GraveDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - variables
+    @IBOutlet var tableView: UITableView!
+    
     var grave: GraveModel!
     let content:[[String:Any]] =
         [
@@ -43,21 +45,26 @@ class GraveDetailsViewController: UITableViewController {
         self.tableView.tableFooterView?.isHidden = true
     }
 
+    //MARK: - IBActions
+    @IBAction func backTap() {
+        self.navigationController!.popViewController(animated: true)
+    }
+    
     
     //MARK: - UITableView methods
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.content[section]["Content"] as! [[String:String]]).count
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.content.count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.content[section]["Title"] as? String
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GraveDetailsCell", for: indexPath)
         
         let data = (self.content[indexPath.section]["Content"] as! [[String:String]])[indexPath.row]
