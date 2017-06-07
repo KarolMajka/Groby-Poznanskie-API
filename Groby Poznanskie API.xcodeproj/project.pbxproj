@@ -17,6 +17,7 @@
 		A37E802B1EC5FC8F003F1781 /* GraveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E802A1EC5FC8F003F1781 /* GraveModel.swift */; };
 		A37E80301EC62BFF003F1781 /* GraveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E802E1EC62BFF003F1781 /* GraveTableViewCell.swift */; };
 		A37E80331EC63ABA003F1781 /* GraveDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80321EC63ABA003F1781 /* GraveDetailsViewController.swift */; };
+		A3A9296A1EE804A0001000D8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3A9296C1EE804A0001000D8 /* Localizable.strings */; };
 		E72FBD00D717258A30B84B5B /* Pods_Groby_Poznanskie_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B50E78878D83753BFEA093 /* Pods_Groby_Poznanskie_API.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,11 +31,15 @@
 		A37E801B1EC5EF12003F1781 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A37E801D1EC5EF12003F1781 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A37E80201EC5EF12003F1781 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A37E80221EC5EF12003F1781 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A37E80281EC5FB6E003F1781 /* RestConsumction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestConsumction.swift; sourceTree = "<group>"; };
 		A37E802A1EC5FC8F003F1781 /* GraveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraveModel.swift; sourceTree = "<group>"; };
 		A37E802E1EC62BFF003F1781 /* GraveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraveTableViewCell.swift; sourceTree = "<group>"; };
 		A37E80321EC63ABA003F1781 /* GraveDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraveDetailsViewController.swift; sourceTree = "<group>"; };
+		A3A929681EE80422001000D8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		A3A929691EE80422001000D8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A3A9296B1EE804A0001000D8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3A9296E1EE804C2001000D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3A929711EE80C1B001000D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		CB2B18A459D5B7601BC018F1 /* Pods-Groby Poznanskie API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groby Poznanskie API.release.xcconfig"; path = "Pods/Target Support Files/Pods-Groby Poznanskie API/Pods-Groby Poznanskie API.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,11 +89,12 @@
 				A37E80161EC5EF12003F1781 /* AppDelegate.swift */,
 				A37E80181EC5EF12003F1781 /* ViewController.swift */,
 				A37E801A1EC5EF12003F1781 /* Main.storyboard */,
+				A3A9296C1EE804A0001000D8 /* Localizable.strings */,
 				A37E80321EC63ABA003F1781 /* GraveDetailsViewController.swift */,
 				A37E801D1EC5EF12003F1781 /* Assets.xcassets */,
 				A37E801F1EC5EF12003F1781 /* LaunchScreen.storyboard */,
 				A37E802E1EC62BFF003F1781 /* GraveTableViewCell.swift */,
-				A37E80221EC5EF12003F1781 /* Info.plist */,
+				A3A929721EE80C1B001000D8 /* Info.plist */,
 				A37E802A1EC5FC8F003F1781 /* GraveModel.swift */,
 				A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */,
 			);
@@ -150,6 +156,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = A37E800A1EC5EF12003F1781;
 			productRefGroup = A37E80141EC5EF12003F1781 /* Products */;
@@ -166,6 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A9296A1EE804A0001000D8 /* Localizable.strings in Resources */,
 				A37E80211EC5EF12003F1781 /* LaunchScreen.storyboard in Resources */,
 				A37E801E1EC5EF12003F1781 /* Assets.xcassets in Resources */,
 				A37E801C1EC5EF12003F1781 /* Main.storyboard in Resources */,
@@ -244,6 +252,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A37E801B1EC5EF12003F1781 /* Base */,
+				A3A929681EE80422001000D8 /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -252,8 +261,26 @@
 			isa = PBXVariantGroup;
 			children = (
 				A37E80201EC5EF12003F1781 /* Base */,
+				A3A929691EE80422001000D8 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A3A9296C1EE804A0001000D8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3A9296B1EE804A0001000D8 /* pl */,
+				A3A9296E1EE804C2001000D8 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		A3A929721EE80C1B001000D8 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3A929711EE80C1B001000D8 /* Base */,
+			);
+			name = Info.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -263,6 +290,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -313,6 +341,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

@@ -34,7 +34,7 @@ class ViewController: UIViewController {
 
     
     func addRefreshController() {
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to refresh", comment: ""))
         self.refreshControl.addTarget(self, action: #selector(self.loadDataFromRemote(_:)), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(refreshControl)
     }
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 if sender != nil {
                     self.tableView.isUserInteractionEnabled = true
-                    self.showAlert(title: "Groby Poznańskie", message: "Nieudało się pobrać nowych danych", action: { _ in
+                    self.showAlert(title: NSLocalizedString("Poznan Graves", comment: ""), message: NSLocalizedString("Unable to download new data", comment: ""), action: { _ in
                         self.refreshControl.endRefreshing()
                     })
                 } else {

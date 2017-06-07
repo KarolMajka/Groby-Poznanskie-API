@@ -1,0 +1,21 @@
+/* 
+  Lozalizable.strings
+  Groby Poznanskie API
+
+  Created by Karol Majka on 07/06/2017.
+  Copyright © 2017 karolmajka. All rights reserved.
+*/
+
+"Pull to refresh" = "Pull to refresh"
+"Poznan Graves" = "Poznan Graves"
+"Unable to download new data" = "Unable to download new data"
+"Data" = "Data"
+"Name" = "Name"
+"Surname" = "Surname"
+"Time Life" = "Time Life"
+"Birth Date" = "Birth Date"
+"Death Date" = "Death Date"
+"Grave Place" = "Grave Place"
+"Quarter" = "Quarter"
+"Place" = "Place"
+"Row" = "Row"

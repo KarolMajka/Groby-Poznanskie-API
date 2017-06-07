@@ -14,23 +14,23 @@ class GraveDetailsViewController: UITableViewController {
     var grave: GraveModel!
     let content:[[String:Any]] =
         [
-            ["Title":"Dane",
+            ["Title":NSLocalizedString("Data", comment: ""),
             "Content":[
-                ["Title":"Imię", "Details":"properties.print_name"],
-                ["Title":"Nazwisko", "Details":"properties.print_surname"]
+                ["Title":NSLocalizedString("Name", comment: ""), "Details":"properties.print_name"],
+                ["Title":NSLocalizedString("Surname", comment: ""), "Details":"properties.print_surname"]
             ]
             ],
-            ["Title":"Czas życia",
+            ["Title":NSLocalizedString("Time Life", comment: ""),
              "Content":[
-                ["Title":"Data urodzenia", "Details":"properties.g_date_birth"],
-                ["Title":"Data zgonu", "Details":"properties.g_date_death"],
+                ["Title":NSLocalizedString("Birth Date", comment: ""), "Details":"properties.g_date_birth"],
+                ["Title":NSLocalizedString("Death Date", comment: ""), "Details":"properties.g_date_death"],
                 ["Title":"", "Details":"properties.g_time_life"]
             ]],
-             ["Title":"Miejsce grobu",
+             ["Title":NSLocalizedString("Grave Place", comment: ""),
                 "Content":[
-                ["Title":"Kwatera", "Details":"properties.g_quarter"],
-                ["Title":"Miejsce", "Details":"properties.g_place"],
-                ["Title":"Rząd", "Details":"properties.g_row"]
+                ["Title":NSLocalizedString("Quarter", comment: ""), "Details":"properties.g_quarter"],
+                ["Title":NSLocalizedString("Place", comment: ""), "Details":"properties.g_place"],
+                ["Title":NSLocalizedString("Row", comment: ""), "Details":"properties.g_row"]
             ]]
         ]
     

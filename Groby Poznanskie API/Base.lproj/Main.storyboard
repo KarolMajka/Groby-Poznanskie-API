@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-878" y="139"/>
         </scene>
-        <!--Lista grobów-->
+        <!--Graves List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Groby_Poznanskie_API" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,7 +113,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="ypq-Jo-5ea" secondAttribute="bottom" id="sYQ-VU-PSe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Lista grobów" id="1pp-Ic-wit"/>
+                    <navigationItem key="navigationItem" title="Graves List" id="1pp-Ic-wit"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="Cvh-nu-hHJ" id="ywq-ed-G8h"/>
                         <outlet property="errorLabel" destination="Vld-va-2zE" id="W2f-rT-n21"/>
@@ -139,18 +139,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="543-Tq-dw9" id="Jsq-dL-his">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="387-pK-UAU">
-                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="15" y="11" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sy4-uq-kIo">
-                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                            <rect key="frame" x="316" y="11" width="44" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>

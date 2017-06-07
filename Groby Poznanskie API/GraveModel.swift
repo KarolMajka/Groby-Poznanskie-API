@@ -155,28 +155,28 @@ class GravePropertiesModel: Object, Mappable {
     }
     
     private func getDateString(year: Int, month: Int, day: Int) -> String {
-        let yearString = self.getPartDateString(date: year, values:["rok", "lata", "lat"])
-        let monthString = self.getPartDateString(date: month, values: ["miesiąc", "miesiące", "miesięcy"])
-        let dayString = self.getPartDateString(date: day, values: ["dzień", "dni", "dni"])
+        let yearString = self.getPartDateString(date: year, values:[NSLocalizedString("year1", comment: ""), NSLocalizedString("year2", comment: ""), NSLocalizedString("year3", comment: "")])
+        let monthString = self.getPartDateString(date: month, values: [NSLocalizedString("month1", comment: ""), NSLocalizedString("month2", comment: ""), NSLocalizedString("month3", comment: "")])
+        let dayString = self.getPartDateString(date: day, values: [NSLocalizedString("day1", comment: ""), NSLocalizedString("day2", comment: ""), NSLocalizedString("day3", comment: "")])
         var dateString = yearString
         if yearString != "" {
             if monthString != "" && dayString != "" {
-                dateString += ", " + monthString + " i " + dayString
+                dateString += ", " + monthString + NSLocalizedString(" and ", comment: "") + dayString
             } else if monthString != "" {
-                dateString += " i " + monthString
+                dateString += NSLocalizedString(" and ", comment: "") + monthString
             } else if dayString != "" {
-                dateString += " i " + dayString
+                dateString += NSLocalizedString(" and ", comment: "") + dayString
             }
         } else {
             dateString = monthString
             if monthString != "" {
                 if dayString != "" {
-                    dateString += " i " + dayString
+                    dateString += NSLocalizedString(" and ", comment: "") + dayString
                 }
             } else {
                 dateString = dayString
                 if dayString == "" {
-                    return "0 dni"
+                    return NSLocalizedString("0 day", comment: "")
                 }
             }
         }

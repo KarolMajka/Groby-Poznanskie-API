@@ -1,0 +1,32 @@
+/* 
+  Lozalizable.strings
+  Groby Poznanskie API
+
+  Created by Karol Majka on 07/06/2017.
+  Copyright © 2017 karolmajka. All rights reserved.
+*/
+
+"Pull to refresh" = "Pull to refresh";
+"Poznan Graves" = "Groby Poznańskie";
+"Unable to download new data" = "Nieudało się pobrać nowych danych";
+"Data" = "Dane";
+"Name" = "Imię";
+"Surname" = "Nazwisko";
+"Time Life" = "Czas życia";
+"Birth Date" = "Data urodzenia";
+"Death Date" = "Data zgonu";
+"Grave Place" = "Miejsce grobu";
+"Quarter" = "Kwatera";
+"Place" = "Miejsce";
+"Row" = "Rząd";
+"year1" = "rok";
+"year2" = "lata";
+"year3" = "lat";
+"month1" = "miesiąc";
+"month2" = "miesiące";
+"month3" = "miesięcy";
+"day1" = "dzień";
+"day2" = "dni";
+"day3" = "dni";
+" and " = " i ";
+"0 day" = "0 dni";

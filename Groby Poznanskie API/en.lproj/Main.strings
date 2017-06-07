@@ -1,0 +1,15 @@
+
+/* Class = "UINavigationItem"; title = "Lista grobów"; ObjectID = "1pp-Ic-wit"; */
+"1pp-Ic-wit.title" = "Lista grobów";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "387-pK-UAU"; */
+"387-pK-UAU.text" = "Title";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "Sy4-uq-kIo"; */
+"Sy4-uq-kIo.text" = "Detail";
+
+/* Class = "UILabel"; text = "Unable to download data. Tap to reload."; ObjectID = "Vld-va-2zE"; */
+"Vld-va-2zE.text" = "Unable to download data. Tap to reload.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eov-TN-cUP"; */
+"eov-TN-cUP.text" = "Label";
