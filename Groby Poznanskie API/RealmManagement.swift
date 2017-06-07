@@ -25,24 +25,15 @@ extension ViewController {
         for object in realmObjects! {
             graveArray.append(object)
         }
-        
         return graveArray
     }
 
     func saveGravesInRealm(graveArray: [GraveModel]) {
         clearGravesTable()
         let realm = try! Realm()
-        for grave in graveArray {
-            let realmRow = grave
-            //realmRow.geometry = grave.geometry
-            //realmRow.id = grave.id
-            //realmRow.properties = grave.properties
-
             try! realm.write {
-                realm.add(realmRow)
-                
+                realm.add(graveArray)
             }
-        }
     }
 
     private func clearGravesTable() {

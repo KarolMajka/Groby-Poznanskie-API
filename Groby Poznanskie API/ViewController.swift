@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet var visualEffectView: UIVisualEffectView!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet var errorLabel: UILabel!
-
+    
+    let refreshControl = UIRefreshControl()
     var arrayOfGraves: [GraveModel] = []
     
     
@@ -26,10 +27,18 @@ class ViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapView(_:)))
         self.visualEffectView.addGestureRecognizer(tap)
+        self.addRefreshController()
         
         self.loadData()
     }
 
+    
+    func addRefreshController() {
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(self.loadDataFromRemote(_:)), for: UIControlEvents.valueChanged)
+        self.tableView.addSubview(refreshControl)
+    }
+    
     func tapView(_ sender: UITapGestureRecognizer) {
         self.visualEffectView.isUserInteractionEnabled = false
         self.errorLabel.isHidden = true
@@ -44,12 +53,14 @@ class ViewController: UIViewController {
             self.tableView.reloadData()
             self.visualEffectView.removeFromSuperview()
         } else {
-            self.loadDataFromRemote()
+            self.loadDataFromRemote(nil)
         }
     
     }
     
-    func loadDataFromRemote() {
+    func loadDataFromRemote(_ sender: Any?) {
+        self.tableView.isUserInteractionEnabled = false
+        
         self.getData(block: { (graves:[GraveModel]) in
             DispatchQueue.main.async {
                 self.arrayOfGraves = graves.filter({graveModel in
@@ -61,12 +72,33 @@ class ViewController: UIViewController {
                 self.saveGravesInRealm(graveArray: self.arrayOfGraves)
                 self.tableView.reloadData()
                 self.visualEffectView.removeFromSuperview()
+                self.tableView.isUserInteractionEnabled = true
+                if sender != nil {
+                    self.refreshControl.endRefreshing()
+                }
             }
         }, error: { (responseCode:Int?) in
-            self.errorLabel.isHidden = false
-            self.activityIndicatorView.stopAnimating()
-            self.visualEffectView.isUserInteractionEnabled = true
+            DispatchQueue.main.async {
+                if sender != nil {
+                    self.tableView.isUserInteractionEnabled = true
+                    self.showAlert(title: "Groby Poznańskie", message: "Nieudało się pobrać nowych danych", action: { _ in
+                        self.refreshControl.endRefreshing()
+                    })
+                } else {
+                    self.errorLabel.isHidden = false
+                    self.activityIndicatorView.stopAnimating()
+                    self.visualEffectView.isUserInteractionEnabled = true
+                }
+            }
         })
+    }
+    
+    func showAlert(title: String, message: String, action: ((UIAlertAction?) -> Void)?) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: action))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     //MARK: - Navigation methods

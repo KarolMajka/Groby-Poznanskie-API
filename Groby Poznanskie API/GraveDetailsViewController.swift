@@ -41,7 +41,6 @@ class GraveDetailsViewController: UITableViewController {
         
         self.tableView.tableFooterView = UIView()
         self.tableView.tableFooterView?.isHidden = true
-        
     }
 
     
