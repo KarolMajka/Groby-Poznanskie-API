@@ -60,7 +60,7 @@ class ViewController: UIViewController, ViewControllerProtocol {
             self.tableViewManager.arrayOfGraves = graves
             self.tableViewManager.filteredArrayOfGraves = graves
             self.tableView.reloadData()
-            self.visualEffectView.removeFromSuperview()
+            self.visualEffectView.isHidden = true
         } else {
             self.loadDataFromRemote(nil)
         }
@@ -81,7 +81,8 @@ class ViewController: UIViewController, ViewControllerProtocol {
                 self.tableViewManager.filteredArrayOfGraves = self.tableViewManager.arrayOfGraves
                 self.saveGravesInRealm(graveArray: self.tableViewManager.arrayOfGraves)
                 self.tableView.reloadData()
-                self.visualEffectView.removeFromSuperview()
+                self.activityIndicatorView.stopAnimating()
+                self.visualEffectView.isHidden = true
                 self.tableView.isUserInteractionEnabled = true
                 if sender != nil {
                     self.refreshControl.endRefreshing()
@@ -112,9 +113,13 @@ class ViewController: UIViewController, ViewControllerProtocol {
     }
     
     func resizeHeader(for scrollSize: CGFloat) {
-        self.headerViewHeightConstraint.constant += scrollSize
-        self.headerViewHeightConstraint.constant = max(min(self.headerViewHeightConstraint.constant, 70), 35)
-        self.gravesListLabel.alpha = (self.headerViewHeightConstraint.constant - 35)/(70-35)
+        let newHeight = max(min(self.headerViewHeightConstraint.constant + scrollSize, 70), 35)
+        self.headerViewHeightConstraint.constant = newHeight
+        self.gravesListLabel.alpha = (newHeight - 35)/(70-35)
+    }
+    
+    func hideKeyboard() {
+        self.searchBar.resignFirstResponder()
     }
     
     
@@ -143,8 +148,36 @@ class ViewController: UIViewController, ViewControllerProtocol {
         self.hideKeyboard()
     }
 
-    func hideKeyboard() {
-        self.searchBar.resignFirstResponder()
+    func find(surname: String) {
+        self.hideKeyboard()
+        self.activityIndicatorView.startAnimating()
+        self.visualEffectView.isHidden = false
+        self.find(surname: surname, block: { (graves:[GraveModel]) in
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                self.visualEffectView.isHidden = true
+                self.tableViewManager.arrayOfGraves += graves.filter({ graveModel in
+                    if graveModel.id == self.tableViewManager.arrayOfGraves.first(where:{ graveModel2 in
+                        if graveModel.id == graveModel2.id {
+                            return true
+                        }
+                        return false
+                    })?.id {
+                        return false
+                    }
+                    return true
+                })
+                self.tableViewManager.filteredArrayOfGraves = graves
+                self.tableView.reloadData()
+            }
+        }, error: { (responseCode:Int?) in
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                self.showAlert(title: NSLocalizedString("Poznan Graves", comment: ""), message: NSLocalizedString("Unable to download new data", comment: ""), action: { _ in
+                    self.visualEffectView.isHidden = true
+                })
+            }
+        })
     }
     
     func didScroll(for scrollSize: CGFloat) {

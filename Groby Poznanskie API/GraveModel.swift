@@ -19,17 +19,20 @@ class GraveModel: Object, Mappable {
         self.init()
     }
 
-    
+    dynamic var favorite: Bool = false
     dynamic var geometry: GraveGeometryModel? = GraveGeometryModel()
     dynamic var id: Int = 0
     dynamic var properties: GravePropertiesModel? = GravePropertiesModel()
     
-
     func mapping(map: Map) {
         //let values = try! (map.value("geometry.coordinates") as! [[CGFloat]])
         geometry <- map["geometry"]
         id <- map["id"]
         properties <- map["properties"]
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
     
     func getFullName() -> String {
@@ -48,7 +51,10 @@ class GraveGeometryModel: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        let values = (map.JSON["coordinates"] as! NSArray)[0] as! NSArray
+        var values = (map.JSON["coordinates"] as! NSArray)
+        if (values[0] as? NSArray) != nil {
+            values = values[0] as! NSArray
+        }
         x = values[0] as! CGFloat
         y = values[1] as! CGFloat
         type <- map["type"]

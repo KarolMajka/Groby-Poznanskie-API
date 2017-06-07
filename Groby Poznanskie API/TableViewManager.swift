@@ -54,7 +54,7 @@ class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UI
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.delegateMethod.hideKeyboard()
+        self.delegateMethod.find(surname: searchBar.text!.lowercased())
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

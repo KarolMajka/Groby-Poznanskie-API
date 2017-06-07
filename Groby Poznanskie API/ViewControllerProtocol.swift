@@ -12,7 +12,7 @@ protocol ViewControllerProtocol {
     func showGraveDetails(grave: GraveModel)
     func reloadData()
     func cancelButtonTap()
-    func hideKeyboard()
+    func find(surname: String)
     func showKeyboard()
     func didScroll(for scrollSize: CGFloat)
 }
