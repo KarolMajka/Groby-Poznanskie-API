@@ -9,7 +9,7 @@
 "Sy4-uq-kIo.text" = "Detail";
 
 /* Class = "UILabel"; text = "Unable to download data. Tap to reload."; ObjectID = "Vld-va-2zE"; */
-"Vld-va-2zE.text" = "Nieudało się pobrać danych. Dotknij by odświeżyć";
+"Vld-va-2zE.text" = "Nieudało się pobrać danych. Dotknij aby odświeżyć";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "eov-TN-cUP"; */
 "eov-TN-cUP.text" = "Label";
