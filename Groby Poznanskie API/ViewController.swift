@@ -156,17 +156,21 @@ class ViewController: UIViewController, ViewControllerProtocol {
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
                 self.visualEffectView.isHidden = true
-                self.tableViewManager.arrayOfGraves += graves.filter({ graveModel in
-                    if graveModel.id == self.tableViewManager.arrayOfGraves.first(where:{ graveModel2 in
-                        if graveModel.id == graveModel2.id {
-                            return true
+                if graves.count == 0 {
+                    self.showAlert(title: NSLocalizedString("Poznan Graves", comment: ""), message: NSLocalizedString("No people found with that surname", comment: ""), action: nil)
+                } else {
+                    self.tableViewManager.arrayOfGraves += graves.filter({ graveModel in
+                        if graveModel.id == self.tableViewManager.arrayOfGraves.first(where:{ graveModel2 in
+                            if graveModel.id == graveModel2.id {
+                                return true
+                            }
+                            return false
+                        })?.id {
+                            return false
                         }
-                        return false
-                    })?.id {
-                        return false
-                    }
-                    return true
-                })
+                        return true
+                    })
+                }
                 self.tableViewManager.filteredArrayOfGraves = graves
                 self.tableView.reloadData()
             }
