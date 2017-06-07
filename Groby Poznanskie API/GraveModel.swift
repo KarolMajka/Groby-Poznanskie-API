@@ -8,68 +8,82 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
-class GraveModel: Mappable {
-    var geometry: GraveGeometryModel?
-    var id: Int?
-    var properties: GravePropertiesModel?
-    
-    required init?(map: Map) {
-        
+class GraveModel: Object, Mappable {
+
+    required convenience init?(map: Map) {
+        if map.JSON["id"] == nil {
+            return nil
+        }
+        self.init()
     }
+
     
+    dynamic var geometry: GraveGeometryModel? = GraveGeometryModel()
+    dynamic var id: Int = 0
+    dynamic var properties: GravePropertiesModel? = GravePropertiesModel()
+    
+
     func mapping(map: Map) {
+        //let values = try! (map.value("geometry.coordinates") as! [[CGFloat]])
         geometry <- map["geometry"]
         id <- map["id"]
         properties <- map["properties"]
     }
     
     func getFullName() -> String {
-        return self.properties!.print_surname! + " " + self.properties!.print_name!
+        return self.properties!.print_surname + " " + self.properties!.print_name
     }
     
 }
 
-class GraveGeometryModel: Mappable {
-    var coordinates: CGPoint?
-    var type: GeometryTypeEnum?
+class GraveGeometryModel: Object, Mappable {
+    dynamic var x: CGFloat = 0
+    dynamic var y: CGFloat = 0
+    dynamic var type: NSString = ""
     
-    required init?(map: Map) {
-        
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
         let values = (map.JSON["coordinates"] as! NSArray)[0] as! NSArray
-        coordinates = CGPoint(x: values[0] as! CGFloat, y: values[1] as! CGFloat)
-        type <- (map["type"], EnumTransform<GeometryTypeEnum>())
+        x = values[0] as! CGFloat
+        y = values[1] as! CGFloat
+        type <- map["type"]
     }
 }
 
-class GravePropertiesModel: NSObject, Mappable {
-    var cm_id: Int?
-    var cm_nr: Int?
-    var g_date_birth: String?
-    var g_date_burial: String?
-    var g_date_death: String?
-    var g_family: String?
-    var g_field: String?
-    var g_name: String?
-    var g_place: String?
-    var g_quarter: String?
-    var g_row: String?
-    var g_size: String?
-    var g_surname: String?
-    var g_surname_name: String?
-    var paid: Int?
-    var print_name: String?
-    var print_surname: String?
-    var print_surname_name: String?
-    lazy var g_time_life: String? = {
+class GravePropertiesModel: Object, Mappable {
+    dynamic var cm_id: Int = 0
+    dynamic var cm_nr: Int = 0
+    dynamic var g_date_birth: String = ""
+    dynamic var g_date_burial: String = ""
+    dynamic var g_date_death: String = ""
+    dynamic var g_family: String = ""
+    dynamic var g_field: String = ""
+    dynamic var g_name: String = ""
+    dynamic var g_place: String = ""
+    dynamic var g_quarter: String = ""
+    dynamic var g_row: String = ""
+    dynamic var g_size: String = ""
+    dynamic var g_surname: String = ""
+    dynamic var g_surname_name: String = ""
+    dynamic var paid: Int = 0
+    dynamic var print_name: String = ""
+    dynamic var print_surname: String = ""
+    dynamic var print_surname_name: String = ""
+    lazy var g_time_life: String = {
         return self.getTimeLifeString()
     }()
+
+    required convenience init?(map: Map) {
+        self.init()
+    }
     
-    required init?(map: Map) {
-        
+    override static func ignoredProperties() -> [String] {
+        return ["g_time_life"]
     }
     
     func mapping(map: Map) {
@@ -92,23 +106,21 @@ class GravePropertiesModel: NSObject, Mappable {
         print_surname <- map["print_surname"]
         print_surname_name <- map["print_surname_name"]
     }
-    
-    func getTimeLifeString() -> String? {
+
+    func getTimeLifeString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         
         guard
-            let birthDateString = self.g_date_birth,
-            let deathDateString = self.g_date_death,
-            let birthDate = formatter.date(from: birthDateString),
-            let deathDate = formatter.date(from: deathDateString) else {
-                return nil
+            let birthDate = formatter.date(from: self.g_date_birth),
+            let deathDate = formatter.date(from: self.g_date_death) else {
+                return ""
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         if dateFormatter.string(from: birthDate) == "01-01-0001" || dateFormatter.string(from: deathDate) == "01-01-0001" {
-            return nil
+            return ""
         }
         let calendar = Calendar.autoupdatingCurrent
         let date1 = calendar.startOfDay(for: birthDate)
@@ -170,10 +182,4 @@ class GravePropertiesModel: NSObject, Mappable {
         }
         return dateString
     }
-}
-
-enum GeometryTypeEnum: String {
-    case Point = "Point"
-    case None = "None"
-    
 }

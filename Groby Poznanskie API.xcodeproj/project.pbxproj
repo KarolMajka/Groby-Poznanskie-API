@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A34A1E6B1EDEF05600E96FE7 /* RealmManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */; };
 		A37E80171EC5EF12003F1781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80161EC5EF12003F1781 /* AppDelegate.swift */; };
 		A37E80191EC5EF12003F1781 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80181EC5EF12003F1781 /* ViewController.swift */; };
 		A37E801C1EC5EF12003F1781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37E801A1EC5EF12003F1781 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		15B50E78878D83753BFEA093 /* Pods_Groby_Poznanskie_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Groby_Poznanskie_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6995A4A45BC1FA41F459B0DB /* Pods-Groby Poznanskie API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groby Poznanskie API.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Groby Poznanskie API/Pods-Groby Poznanskie API.debug.xcconfig"; sourceTree = "<group>"; };
+		A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManagement.swift; sourceTree = "<group>"; };
 		A37E80131EC5EF12003F1781 /* Groby Poznanskie API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Groby Poznanskie API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37E80161EC5EF12003F1781 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A37E80181EC5EF12003F1781 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				A37E802E1EC62BFF003F1781 /* GraveTableViewCell.swift */,
 				A37E80221EC5EF12003F1781 /* Info.plist */,
 				A37E802A1EC5FC8F003F1781 /* GraveModel.swift */,
+				A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */,
 			);
 			path = "Groby Poznanskie API";
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A34A1E6B1EDEF05600E96FE7 /* RealmManagement.swift in Sources */,
 				A37E80291EC5FB6E003F1781 /* RestConsumction.swift in Sources */,
 				A37E802B1EC5FC8F003F1781 /* GraveModel.swift in Sources */,
 				A37E80191EC5EF12003F1781 /* ViewController.swift in Sources */,

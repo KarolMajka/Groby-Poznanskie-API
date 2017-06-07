@@ -6,6 +6,7 @@ target 'Groby Poznanskie API' do
   use_frameworks!
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
+  pod 'RealmSwift'
   # Pods for Groby Poznanskie API
 
 end

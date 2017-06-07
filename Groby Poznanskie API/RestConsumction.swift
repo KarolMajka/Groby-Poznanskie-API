@@ -9,21 +9,25 @@
 import Foundation
 import Alamofire
 import AlamofireObjectMapper
+import RealmSwift
 
-func getData(block: @escaping ([GraveModel])->(), error: @escaping (Int?) ->()) {
-    let backgroundQueueForREST = DispatchQueue(label: "com.app.queueForRest",qos: .background, target: nil)
-    let url = "http://www.poznan.pl/featureserver/featureserver.cgi/groby/all.json"
-    
-    
-    Alamofire.request(url).responseArray(queue: backgroundQueueForREST, keyPath: "features", context: nil, completionHandler: { (response: DataResponse<[GraveModel]>) in
+extension ViewController {
+
+    func getData(block: @escaping ([GraveModel])->(), error: @escaping (Int?) ->()) {
+        let backgroundQueueForREST = DispatchQueue(label: "com.app.queueForRest",qos: .background, target: nil)
+        let url = "http://www.poznan.pl/featureserver/featureserver.cgi/groby/all.json"
         
-        let responseCode = response.response?.statusCode
-        if responseCode == 200 {
-            if let JSON = response.result.value   {
-                block(JSON)
-                return
+        
+        Alamofire.request(url).responseArray(queue: backgroundQueueForREST, keyPath: "features", context: nil, completionHandler: { (response: DataResponse<[GraveModel]>) in
+            
+            let responseCode = response.response?.statusCode
+            if responseCode == 200 {
+                if let JSON = response.result.value   {
+                    block(JSON)
+                    return
+                }
             }
-        }
-        error(responseCode)
-    })
+            error(responseCode)
+        })
+    }
 }

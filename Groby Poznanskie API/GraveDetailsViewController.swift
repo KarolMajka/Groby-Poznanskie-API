@@ -16,21 +16,21 @@ class GraveDetailsViewController: UITableViewController {
         [
             ["Title":"Dane",
             "Content":[
-                ["Title":"Imię", "Details":"print_name"],
-                ["Title":"Nazwisko", "Details":"print_surname"]
+                ["Title":"Imię", "Details":"properties.print_name"],
+                ["Title":"Nazwisko", "Details":"properties.print_surname"]
             ]
             ],
             ["Title":"Czas życia",
              "Content":[
-                ["Title":"Data urodzenia", "Details":"g_date_birth"],
-                ["Title":"Data zgonu", "Details":"g_date_death"],
-                ["Title":"", "Details":"g_time_life"]
+                ["Title":"Data urodzenia", "Details":"properties.g_date_birth"],
+                ["Title":"Data zgonu", "Details":"properties.g_date_death"],
+                ["Title":"", "Details":"properties.g_time_life"]
             ]],
              ["Title":"Miejsce grobu",
                 "Content":[
-                ["Title":"Kwatera", "Details":"g_quarter"],
-                ["Title":"Miejsce", "Details":"g_place"],
-                ["Title":"Rząd", "Details":"g_row"]
+                ["Title":"Kwatera", "Details":"properties.g_quarter"],
+                ["Title":"Miejsce", "Details":"properties.g_place"],
+                ["Title":"Rząd", "Details":"properties.g_row"]
             ]]
         ]
     
@@ -41,6 +41,7 @@ class GraveDetailsViewController: UITableViewController {
         
         self.tableView.tableFooterView = UIView()
         self.tableView.tableFooterView?.isHidden = true
+        
     }
 
     
@@ -62,7 +63,7 @@ class GraveDetailsViewController: UITableViewController {
         
         let data = (self.content[indexPath.section]["Content"] as! [[String:String]])[indexPath.row]
         cell.textLabel?.text = data["Title"]
-        cell.detailTextLabel?.text = self.grave.properties?.value(forKey: data["Details"]!) as? String
+        cell.detailTextLabel?.text = self.grave.value(forKeyPath: data["Details"]!) as? String
         return cell
     }
 }
