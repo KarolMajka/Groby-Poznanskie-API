@@ -2,6 +2,7 @@ language: objective-c
 osx_image: xcode8.3
 podfile: Podfile
 install:
+- pod repo update
 - pod install
 - pod update
 xcode_workspace: Groby Poznanskie API.xcworkspace
