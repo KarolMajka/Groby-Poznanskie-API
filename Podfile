@@ -8,7 +8,7 @@ target 'Groby Poznanskie API' do
   # Pods for Groby Poznanskie API
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
-  pod 'RealmSwift', '= 2.8.0'
+  pod 'RealmSwift'
   pod 'Bond'
 
 end
