@@ -11,6 +11,7 @@
 		A3394A491EE8355800F4C4A9 /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3394A481EE8355800F4C4A9 /* ViewControllerProtocol.swift */; };
 		A3394A4D1EE8603B00F4C4A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3394A4F1EE8603B00F4C4A9 /* InfoPlist.strings */; };
 		A34A1E6B1EDEF05600E96FE7 /* RealmManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */; };
+		A34FBEF71EF3F01800C57B08 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34FBEF61EF3F01800C57B08 /* Star.swift */; };
 		A37E80171EC5EF12003F1781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80161EC5EF12003F1781 /* AppDelegate.swift */; };
 		A37E80191EC5EF12003F1781 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E80181EC5EF12003F1781 /* ViewController.swift */; };
 		A37E801C1EC5EF12003F1781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37E801A1EC5EF12003F1781 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		A3394A541EE8623C00F4C4A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A3394A551EE8624800F4C4A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManagement.swift; sourceTree = "<group>"; };
+		A34FBEF61EF3F01800C57B08 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		A37E80131EC5EF12003F1781 /* Groby Poznanskie API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Groby Poznanskie API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37E80161EC5EF12003F1781 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A37E80181EC5EF12003F1781 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		A34FBEF51EF3EFFB00C57B08 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A34FBEF61EF3F01800C57B08 /* Star.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		A37E800A1EC5EF12003F1781 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 		A37E80151EC5EF12003F1781 /* Groby Poznanskie API */ = {
 			isa = PBXGroup;
 			children = (
+				A34FBEF51EF3EFFB00C57B08 /* Views */,
 				A3394A3D1EE80E2F00F4C4A9 /* Controllers */,
 				A3394A3E1EE80E3800F4C4A9 /* Models */,
 				A3394A401EE80E8600F4C4A9 /* Others */,
@@ -296,6 +307,7 @@
 				A37E80191EC5EF12003F1781 /* ViewController.swift in Sources */,
 				A37E80301EC62BFF003F1781 /* GraveTableViewCell.swift in Sources */,
 				A37E80331EC63ABA003F1781 /* GraveDetailsViewController.swift in Sources */,
+				A34FBEF71EF3F01800C57B08 /* Star.swift in Sources */,
 				A37E80171EC5EF12003F1781 /* AppDelegate.swift in Sources */,
 				A3394A471EE8328000F4C4A9 /* TableViewManager.swift in Sources */,
 			);
