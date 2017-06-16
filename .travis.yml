@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode8.3
+podfile: Podfile
+xcode_workspace: Groby Poznanskie API.xcworkspace
+xcode_scheme: Groby Poznanskie API
+script: xcodebuild -workspace "Groby Poznanskie API.xcworkspace" -scheme Travis-Test -sdk iphonesimulator -configuration Debug build
