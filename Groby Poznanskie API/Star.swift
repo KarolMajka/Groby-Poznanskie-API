@@ -7,19 +7,16 @@
 //
 
 import UIKit
-import Bond
+import Foundation
 
 class Star: UIView {
-    
-    //MARK: - Public variables
-    let starColor = Observable<UIColor>(UIColor.init(colorLiteralRed: 242/255, green: 219/255, blue: 106/255, alpha: 0.0))
-    let fill = Observable<Bool>(false)
-    
     
     //MARK: - Private variables
     private var starContainer: UIView!
     private var starLayer: CAShapeLayer!
-    
+    private var fill = false
+    private let starColor = UIColor.init(colorLiteralRed: 242/255, green: 219/255, blue: 106/255, alpha: 0.0)
+
     
     //MARK: - Init methods
     override init(frame: CGRect) {
@@ -35,7 +32,21 @@ class Star: UIView {
     
     //MARK: - Public methods
     func toggleFill() {
-        self.fillStar(!self.fill.value)
+        CATransaction.begin()
+        //CATransaction.setAnimationDuration(1)
+        CATransaction.setDisableActions(false)
+        
+        self.fillStar(!self.fill)
+        CATransaction.commit()
+    }
+    
+    func set(fill: Bool) {
+        CATransaction.begin()
+        //CATransaction.setAnimationDuration(0)
+        CATransaction.setDisableActions(true)
+        
+        self.fillStar(fill)
+        CATransaction.commit()
     }
     
     func rotateStar(forDegree degree: CGFloat) {
@@ -51,24 +62,25 @@ class Star: UIView {
     //MARK: - Private methods
     private func initAll(_ frame: CGRect) {
         self.drawStar(frame)
-        self.initBond()
-    }
-    
-    private func initBond() {
-        let _ = self.fill.observe(with: { _ in
-            self.fillStar(self.fill.value)
-        })
-        let _ = self.starColor.observe(with: { _ in
-            self.fillStar(self.fill.value)
-        })
+        self.starLayer.removeAllAnimations()
     }
     
     private func fillStar(_ fill: Bool) {
-        self.starLayer.fillColor = starColor.value.withAlphaComponent(fill ? 1.0 : 0.0).cgColor
+        self.starLayer.fillColor = self.starColor.withAlphaComponent(fill ? 1.0 : 0.0).cgColor
+        self.fill = fill
+    }
+    
+    private func addAnimation(forLayer layer: CAShapeLayer, duration: CFTimeInterval) {
+        let animation = CABasicAnimation(keyPath: "fillColor.alpha")
+        animation.duration = duration
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        layer.add(animation, forKey: "animate")
     }
     
     private func drawStar(_ frame: CGRect) {
-        let starPath = self.starPath(x: frame.size.width/2, y: frame.size.height/2, radius: 25, sides: 5, pointyness: 1.75)
+        let starPath = self.starPath(x: frame.size.width/2, y: frame.size.height/2, radius: 10, sides: 5, pointyness: 1.75)
         self.starLayer = self.createLayer(forPath: starPath, color: UIColor.black.cgColor)
         
         self.starContainer = self.createStarContainer()

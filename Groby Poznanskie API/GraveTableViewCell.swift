@@ -11,5 +11,5 @@ import UIKit
 class GraveTableViewCell: UITableViewCell {
 
     @IBOutlet var name: UILabel!
-    
+    @IBOutlet var star: Star!
 }

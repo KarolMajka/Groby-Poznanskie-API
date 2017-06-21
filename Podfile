@@ -9,6 +9,5 @@ target 'Groby Poznanskie API' do
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
   pod 'RealmSwift'
-  pod 'Bond'
 
 end

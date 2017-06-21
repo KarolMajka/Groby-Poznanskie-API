@@ -10,6 +10,7 @@ import UIKit
 
 protocol ViewControllerProtocol {
     func showGraveDetails(grave: GraveModel)
+    func toggleFavorite(grave: GraveModel, indexPath: IndexPath)
     func reloadData()
     func cancelButtonTap()
     func find(surname: String)

@@ -14,7 +14,22 @@ class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UI
     var arrayOfGraves: [GraveModel] = []
     var filteredArrayOfGraves: [GraveModel] = []
     var delegateMethod: ViewControllerProtocol!
+    var tableView: UITableView!
     var previousPointY: CGFloat = 0
+    
+    init(_ tableView: UITableView, searchBar: UISearchBar?, delegateMethod: ViewControllerProtocol) {
+        super.init()
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar?.delegate = self
+        self.tableView = tableView
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
+        self.tableView.addGestureRecognizer(tap)
+        
+        self.delegateMethod = delegateMethod
+    }
+    
     
     //MARK: - UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,7 +43,26 @@ class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GraveCell", for: indexPath) as! GraveTableViewCell
         cell.name.text = self.filteredArrayOfGraves[indexPath.row].getFullName()
+        cell.star.set(fill: self.filteredArrayOfGraves[indexPath.row].favorite)
+        
+        let backgroundSelectionView = UIView()
+        backgroundSelectionView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
+        cell.selectedBackgroundView = backgroundSelectionView
+
         return cell
+    }
+    
+    func tableTapped(tap: UITapGestureRecognizer) {
+        let location = tap.location(in: self.tableView)
+        guard let indexPath = self.tableView.indexPathForRow(at: location) else {
+            return
+        }
+        if location.x >= 8 && location.x <= 70 {
+            self.delegateMethod.toggleFavorite(grave: self.filteredArrayOfGraves[indexPath.row], indexPath: indexPath)
+            
+        } else if location.x > 75 {
+            self.tableView(self.tableView, didSelectRowAt: indexPath)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -42,6 +76,7 @@ class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UI
             self.previousPointY = scrollView.contentOffset.y
         }
     }
+    
     
     //MARK: - UISearchView
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TXc-O1-wxR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TXc-O1-wxR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -69,29 +70,40 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GraveCell" rowHeight="71" id="7FK-eZ-uYb" customClass="GraveTableViewCell" customModule="Groby_Poznanskie_API" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GraveCell" focusStyle="custom" rowHeight="72" id="7FK-eZ-uYb" customClass="GraveTableViewCell" customModule="Groby_Poznanskie_API" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7FK-eZ-uYb" id="Ikg-86-jCU">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="eov-TN-cUP">
-                                                    <rect key="frame" x="24" y="16" width="294" height="38.5"/>
+                                                    <rect key="frame" x="87.5" y="16" width="230.5" height="39.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyF-Pq-LrX" customClass="Star" customModule="Groby_Poznanskie_API" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="8" width="55.5" height="55.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="7jY-Xs-pnI"/>
+                                                        <constraint firstAttribute="width" constant="55" id="qHT-cg-UgX"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eov-TN-cUP" firstAttribute="top" secondItem="Ikg-86-jCU" secondAttribute="topMargin" constant="8" id="2cB-Vg-CW5"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="eov-TN-cUP" secondAttribute="bottom" constant="8" id="2je-cf-Jrz"/>
+                                                <constraint firstItem="oyF-Pq-LrX" firstAttribute="leading" secondItem="Ikg-86-jCU" secondAttribute="leadingMargin" constant="8" id="EmI-uK-aqG"/>
+                                                <constraint firstItem="eov-TN-cUP" firstAttribute="leading" secondItem="oyF-Pq-LrX" secondAttribute="trailing" constant="16" id="XfW-AE-46u"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="eov-TN-cUP" secondAttribute="trailing" constant="16" id="Z0b-Ti-9uN"/>
-                                                <constraint firstItem="eov-TN-cUP" firstAttribute="leading" secondItem="Ikg-86-jCU" secondAttribute="leadingMargin" constant="16" id="qUF-SK-6kZ"/>
+                                                <constraint firstItem="oyF-Pq-LrX" firstAttribute="centerY" secondItem="Ikg-86-jCU" secondAttribute="centerY" id="zzK-j0-pYX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="eov-TN-cUP" id="MkA-li-bhT"/>
+                                            <outlet property="star" destination="oyF-Pq-LrX" id="7xe-tC-hrg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -179,18 +191,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="543-Tq-dw9" id="Jsq-dL-his">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="387-pK-UAU">
-                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sy4-uq-kIo">
-                                                    <rect key="frame" x="316" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

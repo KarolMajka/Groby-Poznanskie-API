@@ -15,4 +15,3 @@ Then in project file type:
 - Alamofire
 - Alamofire Object Mapper
 - Realm
-- Bond

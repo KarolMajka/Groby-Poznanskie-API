@@ -20,7 +20,7 @@ class ViewController: UIViewController, ViewControllerProtocol {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var headerViewHeightConstraint: NSLayoutConstraint!
 
-    let tableViewManager: TableViewManager = TableViewManager()
+    var tableViewManager: TableViewManager!
     let refreshControl = UIRefreshControl()
 
     
@@ -33,10 +33,7 @@ class ViewController: UIViewController, ViewControllerProtocol {
         self.visualEffectView.addGestureRecognizer(tap)
         
         self.addRefreshController()
-        self.tableViewManager.delegateMethod = self
-        self.tableView.delegate = self.tableViewManager
-        self.tableView.dataSource = self.tableViewManager
-        self.searchBar.delegate = self.tableViewManager
+        self.tableViewManager = TableViewManager(self.tableView, searchBar: self.searchBar, delegateMethod: self as ViewControllerProtocol)
         
         self.loadData()
     }
@@ -55,7 +52,7 @@ class ViewController: UIViewController, ViewControllerProtocol {
     }
     
     func loadData() {
-        let graves = loadGraveModelFromRealm()
+        let graves = self.sort(graveModel: self.loadGraveModelFromRealm())
         if graves.count != 0 {
             self.tableViewManager.arrayOfGraves = graves
             self.tableViewManager.filteredArrayOfGraves = graves
@@ -72,14 +69,32 @@ class ViewController: UIViewController, ViewControllerProtocol {
         
         self.getData(block: { (graves:[GraveModel]) in
             DispatchQueue.main.async {
-                self.tableViewManager.arrayOfGraves = graves.filter({graveModel in
-                    if graveModel.properties?.print_surname == "Rezerwacja" || graveModel.properties?.print_surname == "Puste" {
+                let gravesFromRealm = self.sort(graveModel: self.loadGraveModelFromRealm())
+                let filteredGraves = graves.filter({ graveModel in
+                    if graveModel.properties?.print_surname == "Rezerwacja" || graveModel.properties?.print_surname == "Puste" || graveModel.properties?.print_surname == "" {
                         return false
                     }
                     return true
                 })
+                if sender != nil {
+                    let favoriteGraves = gravesFromRealm.filter({ $0.favorite })
+                    self.tableViewManager.arrayOfGraves = favoriteGraves + filteredGraves.filter({ filterGrave in
+                        return !favoriteGraves.contains(where: { $0.id == filterGrave.id })
+                    })
+                } else if gravesFromRealm.count != 0 {
+                    self.tableViewManager.arrayOfGraves = gravesFromRealm + filteredGraves.filter({ filterGrave in
+                        return !gravesFromRealm.contains(where: { $0.id == filterGrave.id })
+                    })
+                } else {
+                    self.tableViewManager.arrayOfGraves = filteredGraves
+                }
+                self.tableViewManager.arrayOfGraves = self.sort(graveModel: self.tableViewManager.arrayOfGraves)
                 self.tableViewManager.filteredArrayOfGraves = self.tableViewManager.arrayOfGraves
-                self.saveGravesInRealm(graveArray: self.tableViewManager.arrayOfGraves)
+                if sender != nil {
+                    self.clearGravesTable(expect: self.tableViewManager.arrayOfGraves)
+                } else {
+                    self.saveGravesInRealm(graveArray: self.tableViewManager.arrayOfGraves)
+                }
                 self.tableView.reloadData()
                 self.activityIndicatorView.stopAnimating()
                 self.visualEffectView.isHidden = true
@@ -100,6 +115,16 @@ class ViewController: UIViewController, ViewControllerProtocol {
                     self.activityIndicatorView.stopAnimating()
                     self.visualEffectView.isUserInteractionEnabled = true
                 }
+            }
+        })
+    }
+    
+    func sort(graveModel: [GraveModel]) -> [GraveModel] {
+        return graveModel.sorted(by: {
+            if $0.favorite != $1.favorite {
+                return $0.favorite && !$1.favorite
+            } else {
+                return $0.properties!.g_surname < $1.properties!.g_surname
             }
         })
     }
@@ -138,6 +163,11 @@ class ViewController: UIViewController, ViewControllerProtocol {
         self.performSegue(withIdentifier: "GraveDetails", sender: grave)
     }
     
+    func toggleFavorite(grave: GraveModel, indexPath: IndexPath) {
+        self.updateFavorite(grave: grave)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
     func reloadData() {
         self.tableView.reloadData()
     }
@@ -170,8 +200,9 @@ class ViewController: UIViewController, ViewControllerProtocol {
                         }
                         return true
                     })
+                    self.tableViewManager.arrayOfGraves = self.sort(graveModel: self.tableViewManager.arrayOfGraves)
                 }
-                self.tableViewManager.filteredArrayOfGraves = graves
+                self.tableViewManager.filteredArrayOfGraves = self.sort(graveModel: graves)
                 self.tableView.reloadData()
             }
         }, error: { (responseCode:Int?) in
