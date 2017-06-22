@@ -9,6 +9,9 @@
 import UIKit
 import Foundation
 
+/**
+ Drawing Star for favorite section
+*/
 class Star: UIView {
     
     //MARK: - Private variables
@@ -31,6 +34,9 @@ class Star: UIView {
     
     
     //MARK: - Public methods
+    /**
+     Toggle star fill with default animation
+     */
     func toggleFill() {
         CATransaction.begin()
         //CATransaction.setAnimationDuration(1)
@@ -40,6 +46,11 @@ class Star: UIView {
         CATransaction.commit()
     }
     
+    /**
+     Set star fill without animation
+     
+     - parameter fill: Specifies whether star to have color
+     */
     func set(fill: Bool) {
         CATransaction.begin()
         //CATransaction.setAnimationDuration(0)
@@ -49,10 +60,20 @@ class Star: UIView {
         CATransaction.commit()
     }
     
+    /**
+     Rotate star
+     
+     - parameter degree: For how many degree rotate star
+     */
     func rotateStar(forDegree degree: CGFloat) {
         self.rotateStar(forRadian: degree2radian(degree))
     }
     
+    /**
+     Rotate star
+     
+     - parameter radian: For how many radian rotate star
+     */
     func rotateStar(forRadian radian: CGFloat) {
         let transform = self.starContainer.transform
         self.starContainer.transform = transform.rotated(by: radian)
@@ -62,7 +83,6 @@ class Star: UIView {
     //MARK: - Private methods
     private func initAll(_ frame: CGRect) {
         self.drawStar(frame)
-        self.starLayer.removeAllAnimations()
     }
     
     private func fillStar(_ fill: Bool) {
