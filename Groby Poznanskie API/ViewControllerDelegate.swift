@@ -1,5 +1,5 @@
 //
-//  ViewControllerProtocol.swift
+//  ViewControllerDelegate.swift
 //  Groby Poznanskie API
 //
 //  Created by Karol Majka on 07/06/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ViewControllerProtocol {
+protocol ViewControllerDelegate {
     func showGraveDetails(grave: GraveModel)
     func toggleFavorite(grave: GraveModel, indexPath: IndexPath)
     func reloadData()

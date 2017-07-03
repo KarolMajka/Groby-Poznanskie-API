@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A3394A471EE8328000F4C4A9 /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3394A461EE8328000F4C4A9 /* TableViewManager.swift */; };
-		A3394A491EE8355800F4C4A9 /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3394A481EE8355800F4C4A9 /* ViewControllerProtocol.swift */; };
+		A3394A491EE8355800F4C4A9 /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3394A481EE8355800F4C4A9 /* ViewControllerDelegate.swift */; };
 		A3394A4D1EE8603B00F4C4A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3394A4F1EE8603B00F4C4A9 /* InfoPlist.strings */; };
 		A34A1E6B1EDEF05600E96FE7 /* RealmManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A1E6A1EDEF05600E96FE7 /* RealmManagement.swift */; };
 		A34FBEF71EF3F01800C57B08 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34FBEF61EF3F01800C57B08 /* Star.swift */; };
@@ -30,7 +30,7 @@
 		6995A4A45BC1FA41F459B0DB /* Pods-Groby Poznanskie API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groby Poznanskie API.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Groby Poznanskie API/Pods-Groby Poznanskie API.debug.xcconfig"; sourceTree = "<group>"; };
 		A3394A451EE81CC600F4C4A9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		A3394A461EE8328000F4C4A9 /* TableViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
-		A3394A481EE8355800F4C4A9 /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
+		A3394A481EE8355800F4C4A9 /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A3394A4E1EE8603B00F4C4A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A3394A511EE8604000F4C4A9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A3394A521EE8621100F4C4A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			children = (
 				A37E80181EC5EF12003F1781 /* ViewController.swift */,
 				A3394A461EE8328000F4C4A9 /* TableViewManager.swift */,
-				A3394A481EE8355800F4C4A9 /* ViewControllerProtocol.swift */,
+				A3394A481EE8355800F4C4A9 /* ViewControllerDelegate.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 				A34A1E6B1EDEF05600E96FE7 /* RealmManagement.swift in Sources */,
 				A37E80291EC5FB6E003F1781 /* RestConsumction.swift in Sources */,
 				A37E802B1EC5FC8F003F1781 /* GraveModel.swift in Sources */,
-				A3394A491EE8355800F4C4A9 /* ViewControllerProtocol.swift in Sources */,
+				A3394A491EE8355800F4C4A9 /* ViewControllerDelegate.swift in Sources */,
 				A37E80191EC5EF12003F1781 /* ViewController.swift in Sources */,
 				A37E80301EC62BFF003F1781 /* GraveTableViewCell.swift in Sources */,
 				A37E80331EC63ABA003F1781 /* GraveDetailsViewController.swift in Sources */,

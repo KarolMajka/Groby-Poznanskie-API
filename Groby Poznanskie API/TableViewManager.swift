@@ -13,11 +13,11 @@ class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UI
     //MARK: - Variables
     var arrayOfGraves: [GraveModel] = []
     var filteredArrayOfGraves: [GraveModel] = []
-    var delegateMethod: ViewControllerProtocol!
+    var delegateMethod: ViewControllerDelegate!
     var tableView: UITableView!
     var previousPointY: CGFloat = 0
     
-    init(_ tableView: UITableView, searchBar: UISearchBar?, delegateMethod: ViewControllerProtocol) {
+    init(_ tableView: UITableView, searchBar: UISearchBar?, delegateMethod: ViewControllerDelegate) {
         super.init()
         tableView.delegate = self
         tableView.dataSource = self

@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, ViewControllerProtocol {
+class ViewController: UIViewController, ViewControllerDelegate {
 
     //MARK: - variables
     @IBOutlet var tableView: UITableView!
@@ -33,7 +33,7 @@ class ViewController: UIViewController, ViewControllerProtocol {
         self.visualEffectView.addGestureRecognizer(tap)
         
         self.addRefreshController()
-        self.tableViewManager = TableViewManager(self.tableView, searchBar: self.searchBar, delegateMethod: self as ViewControllerProtocol)
+        self.tableViewManager = TableViewManager(self.tableView, searchBar: self.searchBar, delegateMethod: self as ViewControllerDelegate)
         
         self.loadData()
     }
@@ -67,7 +67,7 @@ class ViewController: UIViewController, ViewControllerProtocol {
     func loadDataFromRemote(_ sender: Any?) {
         self.tableView.isUserInteractionEnabled = false
         
-        self.getData(block: { (graves:[GraveModel]) in
+        self.getAllGraves(block: { (graves:[GraveModel]) in
             DispatchQueue.main.async {
                 let gravesFromRealm = self.sort(graveModel: self.loadGraveModelFromRealm())
                 let filteredGraves = graves.filter({ graveModel in
@@ -201,6 +201,10 @@ class ViewController: UIViewController, ViewControllerProtocol {
                         return true
                     })
                     self.tableViewManager.arrayOfGraves = self.sort(graveModel: self.tableViewManager.arrayOfGraves)
+                }
+                self.tableViewManager.filteredArrayOfGraves = graves
+                for grave in self.tableViewManager.filteredArrayOfGraves {
+                    grave.favorite = self.tableViewManager.arrayOfGraves.first(where: {$0.id == grave.id})?.favorite ?? false
                 }
                 self.tableViewManager.filteredArrayOfGraves = self.sort(graveModel: graves)
                 self.tableView.reloadData()
